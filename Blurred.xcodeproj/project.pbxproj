@@ -222,6 +222,7 @@
 				0889D0FE23C4720E00E867FF /* Sources */,
 				0889D0FF23C4720E00E867FF /* Frameworks */,
 				0889D10023C4720E00E867FF /* Resources */,
+				BLRD260123C4720E00E867FF /* Strip Signing Detritus */,
 			);
 			buildRules = (
 			);
@@ -240,6 +241,7 @@
 				08FF678623A9156A00EACD58 /* Frameworks */,
 				08FF678723A9156A00EACD58 /* Resources */,
 				0889D11523C4739600E867FF /* CopyFiles */,
+				BLRD260223A9156A00EACD58 /* Strip Signing Detritus */,
 			);
 			buildRules = (
 			);
@@ -316,6 +318,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BLRD260123C4720E00E867FF /* Strip Signing Detritus */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Strip Signing Detritus";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# BLURRED-2026: Remove file-provider metadata that current codesign rejects.\n/usr/bin/xattr -cr \"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\" 2>/dev/null || true\n";
+		};
+		BLRD260223A9156A00EACD58 /* Strip Signing Detritus */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Strip Signing Detritus";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# BLURRED-2026: Remove file-provider metadata that current codesign rejects.\n/usr/bin/xattr -cr \"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\" 2>/dev/null || true\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0889D0FE23C4720E00E867FF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -390,10 +433,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BlurredLauncher/BlurredLauncher.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = VGURA84Q2L;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
+				/* BLURRED-2026: Debug builds sign locally instead of requiring the old team certificate. */
 				INFOPLIST_FILE = BlurredLauncher/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -549,12 +594,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Blurred/Blurred.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = VGURA84Q2L;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
+				/* BLURRED-2026: Debug builds sign locally instead of requiring the old team certificate. */
 				INFOPLIST_FILE = Blurred/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

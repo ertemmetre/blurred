@@ -12,6 +12,12 @@ xcuserdata/
 ## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
 build/
 DerivedData/
+# BLURRED-2026: Ignore repo-local Xcode/SwiftPM caches used by current-Xcode build checks.
+.BuildCaches/
+.BuildHome/
+.DerivedData/
+.DerivedDataUniversal/
+.SourcePackages/
 *.moved-aside
 *.pbxuser
 !default.pbxuser
